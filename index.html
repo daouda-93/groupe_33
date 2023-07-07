@@ -25,6 +25,8 @@
   <link href="assets/font_awesome/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/font_awesome/boxicons/css/boxicons.min.css" rel="stylesheet">
 
+  <script src="https://smtpjs.com/v3/smtp.js"></script>
+
 </head>
 
 <body>
@@ -196,35 +198,29 @@
   </div>
   <div class="offcanvas-body">
       <div class="contact">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="#" method="post" class="php-email-form">
 
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Votre nom et prénoms </label>
-              <input type="text" class="form-control" name="name" id="name" >
+              <input type="text" class="form-control" id="name" >
             </div>
         
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Votre e-mail</label>
-              <input type="email" class="form-control" name="email" id="email" >
+              <input type="email" class="form-control" id="email" >
             </div>
         
             <div class="mb-3">
               <label for="exampleFormControlInput1" class="form-label">Votre sujet</label>
-              <input type="text" class="form-control" name="subject" id="subject" >
+              <input type="text" class="form-control" id="subject" >
             </div>
         
             <div class="mb-3">
               <label for="exampleFormControlTextarea1" class="form-label">Votre message</label>
-              <textarea class="form-control" name="message" rows="3"></textarea>
+              <textarea class="form-control" id="message" rows="3"></textarea>
             </div>
-        
-            <div class="my-3">
-              <div class="loading">Chargement</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Votre message n'a pas été envoyé. Merci ressayé !!</div>
-            </div>
-            
-            <div class="text-center"><button type="submit">Envoyer Message</button></div>
+                    
+            <div class="text-center"><button type="submit" id = "btn" >Envoyer Message</button></div>
           </form>
       </div>
   </div>
@@ -875,7 +871,42 @@
 
 </body>
 
+  <!-- =======  js envoi email créer par éloge======= -->
+
+  <script>
+
+    var btn = document.getElementById('btn');
+
+    btn.addEventListener('click', function(e)
+    {
+      e.preventDefault()
+
+        var name = document.getElementById('name').value;
+        var email = document.getElementById('email').value;
+        var subject = document.getElementById('subject').value;
+        var message = document.getElementById('message').value;
+
+        var body = 'name' +'</br> email : '+ email + '</br> subject ' +
+        
+        subject + '</br> message ' + message; 
+
+      Email.send({
+
+        Host : "smtp.elasticemail.com",
+        Username : "zolomercier@gmail.com",
+        Password : "9676F06ABB6F2982C2DC0C96A1763663ADDC",
+        To : "info@soft-global-services.com",
+        Form : email,
+        Subjet : subject,
+        Body : body
+
+      }).then(
+        message => alert("Votre message est envoyé avec succès !!")
+      )
+    })
+    
+  </script>
+  
 </html>
 
 
-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
