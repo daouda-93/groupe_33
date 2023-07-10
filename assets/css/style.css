@@ -3,6 +3,14 @@ body
   font-family: "Open Sans", sans-serif;
   color: #212529;
 }
+.orange
+{
+  color: #eb5d1e;
+}
+.background
+{
+  background: #eb5d1e;
+}
 
 a {
   color: #eb5d1e;
